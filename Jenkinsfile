@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    docker network rm -f site
+                    docker network rm -f site || true
                     docker network create site
                     """
                 }
