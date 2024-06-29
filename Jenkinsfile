@@ -24,22 +24,22 @@ pipeline {
                 }
             }
         }
-        stage('Run Backend Container') {
-            steps {
-                script {
-                    sh """
-                    docker rm -f backend
-                    docker run -d --name backend --network site -p 5034:5034 --restart unless-stopped chikibevchik/back
-                    """
-                }
-            }
-        }
         stage('Run Frontend Container') {
             steps {
                 script {
                     sh """
                     docker rm -f frontend
                     docker run -d --name frontend --network site -p 80:80 --restart unless-stopped chikibevchik/front
+                    """
+                }
+            }
+        }
+        stage('Run Backend Container') {
+            steps {
+                script {
+                    sh """
+                    docker rm -f backend
+                    docker run -d --name backend --network site -p 5034:5034 --restart unless-stopped chikibevchik/back
                     """
                 }
             }
