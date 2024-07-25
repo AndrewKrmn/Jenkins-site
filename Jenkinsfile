@@ -1,12 +1,7 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Run MSSQL Container') {
-          agent {
-            docker{
-                image 'mcr.microsoft.com/mssql/server:2022-latest'
-            }
-          }
             steps {
                 script {
                     sh """
